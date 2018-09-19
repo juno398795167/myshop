@@ -1,0 +1,15 @@
+dubbo:
+  application:
+    name: server-provider
+  registry:
+    address: zookeeper://192.168.147.130:2181
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://192.168.147.130:3306/1804shop
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.mchange.v2.c3p0.ComboPooledDataSource
+mybatis:
+  type-aliases-package: com.qf.entity
+  mapper-locations: classpath*:com/qf/impl/*.xml
