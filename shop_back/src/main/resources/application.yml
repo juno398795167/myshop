@@ -4,9 +4,23 @@ spring:
   thymeleaf:
     cache: false
     mode: HTML5
+  servlet:
+    multipart:
+      max-file-size: 20MB
 dubbo:
   application:
     name: server-consumer
   registry:
     address: zookeeper://192.168.147.130:2181
     check: false
+fdfs:
+  so-timeout: 1500
+  connect-timeout: 600
+  pool:
+    jmx-enabled: false
+  thumb-image:
+    width: 100
+    height: 100
+  tracker-list: 192.168.147.130:22122
+image:
+  path: http://192.168.147.130/

@@ -19,4 +19,10 @@ public class GoofsServiceImpl implements IGoodsService {
         List<goods> list = iGoodsDao.queryAll();
         return list;
     }
+
+    @Override
+    public goods addGoods(goods goods) {
+        iGoodsDao.addGoods(goods);
+        return goods;
+    }
 }

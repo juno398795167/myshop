@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface IGoodsService {
     public List<goods> queryAll();
+
+    goods addGoods(goods goods);
 }

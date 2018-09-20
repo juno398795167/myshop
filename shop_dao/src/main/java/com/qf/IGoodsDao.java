@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface IGoodsDao {
     List<goods> queryAll();
+
+    Integer addGoods(goods goods);
 }

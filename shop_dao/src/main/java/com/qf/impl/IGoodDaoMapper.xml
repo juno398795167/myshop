@@ -4,4 +4,8 @@
     <select id="queryAll" resultType="goods">
         SELECT * FROM goods
     </select>
+    <insert id="addGoods"  useGeneratedKeys="true" keyProperty="id"  >
+        insert into goods VALUES (id=null,#{title},#{ginfo}
+        ,#{gcount},#{tid},#{allprice},#{price},#{gimage})
+    </insert>
 </mapper>

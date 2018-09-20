@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<base th:href="${#request.getContextPath()+'/'}">
+<body>
+    <form th:action="${#request.getContextPath()+'/goods/addGoods'}" method="post" enctype="multipart/form-data">
+        商品名字:<input name="title" type="text"></br>
+        商品简介:<textarea name="ginfo" cols="5" rows="5" ></textarea></br>
+        商品原价:<input name="allprice" type="text"></br>
+        商品折扣价:<input name="price" type="text"></br>
+        商品图片:<input name="file" type="file"></br>
+
+        商品库存:<input name="gcount" type="text"></br>
+        <button type="submit">添加</button>
+    </form>
+</body>
+</html>
