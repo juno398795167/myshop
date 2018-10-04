@@ -8,4 +8,7 @@
         insert into goods VALUES (id=null,#{title},#{ginfo}
         ,#{gcount},#{tid},#{allprice},#{price},#{gimage})
     </insert>
+    <select id="queryNew" resultType="goods">
+        select * from goods ORDER BY id  desc limit 4;
+    </select>
 </mapper>

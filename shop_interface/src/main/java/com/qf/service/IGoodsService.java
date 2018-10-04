@@ -8,4 +8,6 @@ public interface IGoodsService {
     public List<goods> queryAll();
 
     goods addGoods(goods goods);
+
+    List<goods> queryNew();
 }
