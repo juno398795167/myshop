@@ -1,0 +1,13 @@
+server:
+  port: 8084
+dubbo:
+  application:
+    name: server-consumer
+  registry:
+    address: zookeeper://192.168.147.130:2181
+    check: false
+spring:
+  redis:
+    host: 192.168.147.130
+    port: 6379
+    password: root
