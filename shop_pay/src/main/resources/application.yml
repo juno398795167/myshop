@@ -1,0 +1,8 @@
+server:
+  port: 8088
+dubbo:
+  application:
+    name: server-pay
+  registry:
+    address: zookeeper://192.168.147.130:2181
+    check: false

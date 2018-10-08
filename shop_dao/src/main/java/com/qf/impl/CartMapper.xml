@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qf.ICartDao">
+    <resultMap id="cartMaper" type="cart">
+        <id property="id" column="id"/>
+        <result property="gid" column="gid"/>
+        <result property="gcount" column="gcount"/>
+        <result property="uid" column="uid"/>
+        
+       <association property="goods" javaType="goods">
+        <id property="id" column="id"/>
+           <result property="title" column="title"/>
+           <result property="ginfo" column="ginfo"/>
+           <result property="gcount" column="gcount"/>
+           <result property="tid" column="tid"/>
+           <result property="allprice" column="allprice"/>
+           <result property="price" column="price"/>
+           <result property="gimage" column="gimage"/>
+
+       </association>
+    </resultMap>
+    <select id="queryAllCartByUid" resultType="cart">
+        SELECT * FROM shopcart where uid=#{uid}
+    </select>
+    <insert id="addCart">
+        INSERT INTO  shopcart value(null,#{gid},#{gcount},#{uid})
+    </insert>
+    <delete id="deleteCartById">
+        DELETE FROM shopcart where id = #{id}
+    </delete>
+    <delete id="deleteAllCartByUid">
+        DELETE FROM shopcart where uid=#{uid}
+    </delete>
+    <select id="queryCartBygidanduid" resultType="cart">
+        SELECT * FROM shopcart where uid=#{uid} and gid in
+        <foreach collection="gid" item="gid2" open="(" close=")" separator=",">
+            #{gid2}
+        </foreach>
+    </select>
+    <select id="queryByCid" resultMap="cartMaper">
+      SELECT * from shopcart sc JOIN goods g ON sc.gid = g.id WHERE sc.id IN
+      <foreach collection="cids" item="cid" open="(" close=")" separator=",">
+          #{cid}
+      </foreach>
+    </select>
+</mapper>

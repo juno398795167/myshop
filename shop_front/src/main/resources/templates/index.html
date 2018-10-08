@@ -40,6 +40,7 @@
                                     <li><a title="已买到的商品" target="_top" href="#">已买到的商品</a></li>
                                     <li><a title="个人主页" target="_top" href="#">个人主页</a></li>
                                     <li><a title="我的好友" target="_top" href="#">我的好友</a></li>
+                                    <li><a title="我的订单" target="_top" href="http://localhost:8087/orderController/queryOrderList">我的订单</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -58,8 +59,8 @@
 
                     <li>
                         <div class="topNav_menu">
-                            <a href="#" class="topNavHover">购物车<b>0</b>种商品<i></i></a>
-                            <div class="topNav_menu_bd" style="display:none;">
+                            <a href="http://localhost:8086/cartController/getCartList" class="topNavHover">购物车<b id="num">0</b>种商品<i></i></a>
+                            <div id="cc" class="topNav_menu_bd" style="display:none;">
                                 <!--
                                 <ul>
                                   <li><a title="已售出的商品" target="_top" href="#">已售出的商品</a></li>
@@ -70,7 +71,30 @@
                             </div>
                         </div>
                     </li>
+                    <script type="text/javascript">
+                        $(function () {
+                            $.ajax({
+                                url:"http://localhost:8086/cartController/hasCarts",
+                                dataType:"jsonp"
+                            });
+                        })
+                        function getCart(data) {
 
+                           if(data.length>0){
+                                $("#num").html(data.length);
+                               var html = "<ul>";
+                               for(var i =0;i<data.length;i++){
+                                   html += "<li>";
+                                   html += "<img width='50' src='http://192.168.147.130/" + data[i].goods.gimage+"'/>";
+                                   html += "<span>"+data[i].goods.title+"</span>";
+                                   html += "</li>";
+                               }
+                                    html += "</ul>";
+                               alert(html);
+                               $("#cc").html(html);
+                           }
+                        }
+                    </script>
                     <li>
                         <div class="topNav_menu">
                             <a href="#" class="topNavHover">我的收藏<i></i></a>
@@ -108,7 +132,7 @@
             </ul>
             <div class="clear"></div>
             <div class="search_form">
-                <form method="post" action="http://localhost:8083/solr/queryBySolr" >
+                <form method="get" action="http://localhost:8083/solr/queryBySolr" >
                     <div class="search_formstyle">
                         <input type="text" class="search_form_text" name="query" placeholder="搜索其实很简单"  />
                         <input type="submit" class="search_form_sub" name="secrch_submit" value="" title="搜索" />

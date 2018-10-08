@@ -12,7 +12,8 @@
     <script type="text/javascript" src="js/jquery.js" ></script>
     <script type="text/javascript" src="js/topNav.js" ></script>
     <script type="text/javascript" src="js/shop_list.js" ></script>
-    //sssss
+    <script type="text/javascript" src="http://localhost:8084/js/shop_login.js"></script>
+
 </head>
 <body>
 <!-- Header  -wll-2013/03/24 -->
@@ -22,7 +23,7 @@
         <div class="shop_hd_topNav_all">
             <!-- Header TopNav Left -->
             <div class="shop_hd_topNav_all_left">
-                <p>您好，欢迎来到<b><a href="/">ShoopNC商城</a></b>[<a href="">登录</a>][<a href="">注册</a>]</p>
+                <div id="pid"></div>
             </div>
             <!-- Header TopNav Left End -->
 
@@ -373,8 +374,8 @@
                 <li th:each="goods : ${solrPage.getData()}">
                     <dl>
 
-                        <dt><a href=""><img th:src="${'http://192.168.147.130/'+goods.gimage}" width="350" /></a></dt>
-                        <dd class="title"><a href="" th:utext="${goods.title}">OCIAIZO春装水洗做旧短外套复古磨白短款牛仔外套春01C1417</a></dd>
+                        <dt><a th:href="${'http://localhost:8085/pages/'+goods.getId()+'.html'}"><img th:src="${'http://192.168.147.130/'+goods.gimage}" width="350" /></a></dt>
+                        <dd class="title"><a th:href="${'http://localhost:8085/pages/'+goods.getId()+'.html'}" th:utext="${goods.title}">OCIAIZO春装水洗做旧短外套复古磨白短款牛仔外套春01C1417</a></dd>
                         <dd class="content">
                             <span class="goods_jiage" th:text="${goods.price}">￥<strong>249.00</strong></span>
                             <span class="goods_chengjiao">最近成交5笔</span>

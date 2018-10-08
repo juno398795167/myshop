@@ -55,7 +55,7 @@ public class searchController {
     @RequestMapping("/queryBySolr")
     public String queryBySolr(String query, Model model, SolrPage<goods> solrPage){
         SolrQuery solrQuery = new SolrQuery();
-        if(!"".equals(query.trim())&&query!=null){
+        if(!"".equals(query)&&null!=query){
             solrQuery.setQuery("goods_info:"+query);
         }else{
             solrQuery.setQuery("*:*");

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script th:inline="javascript">
+        window.onload = function () {
+            window.open("http://localhost:8088/payController/topay?orderid="+[[${orderid}]],"_blank")
+        }
+        function isok() {
+            location.href="/payController/isok?orderid="+[[${orderid}]]
+        }
+    </script>
+</head>
+<base th:href="${#request.getContextPath()+'/'}">
+<body >
+        <h1>正在支付</h1>
+        <button th:inline="text" onclick="isok();">支付已完成</button>
+        <button>支付异常</button>
+</body>
+</html>

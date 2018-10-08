@@ -6,10 +6,12 @@ import com.qf.IGoodsDao;
 import com.qf.entity.goods;
 import com.qf.service.IGoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 
 
 import java.util.List;
 @Service
+@Primary
 public class GoofsServiceImpl implements IGoodsService {
     @Autowired
     IGoodsDao iGoodsDao;
@@ -30,5 +32,10 @@ public class GoofsServiceImpl implements IGoodsService {
     public List<goods> queryNew() {
 
         return iGoodsDao.queryNew();
+    }
+
+    @Override
+    public goods queryOneById(Integer id) {
+        return iGoodsDao.queryOneById(id);
     }
 }

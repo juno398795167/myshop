@@ -11,4 +11,7 @@
     <select id="queryNew" resultType="goods">
         select * from goods ORDER BY id  desc limit 4;
     </select>
+    <select id="queryOneById" resultType="goods">
+        SELECT * FROM  goods where id =#{id}
+    </select>
 </mapper>

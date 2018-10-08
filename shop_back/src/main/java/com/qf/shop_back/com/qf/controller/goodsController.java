@@ -57,8 +57,10 @@ public class goodsController {
         System.out.println("实体类goods："+goods);
         com.qf.entity.goods goods1 = iGoodsService.addGoods(goods);
         System.out.println("主键回填："+goods1.getId());
-       String s = httpClientUtils.sendJsonPost("http://localhost:8083/solr/addGoods", new Gson().toJson(goods1));
+        String s = httpClientUtils.sendJsonPost("http://localhost:8083/solr/addGoods", new Gson().toJson(goods1));
         //System.out.println("打印打印打印："+s);
+        httpClientUtils.sendJsonPost("http://localhost:8085/itemController/addPage", new Gson().toJson(goods1));
+
         return "redirect:/goods/goodsList";
     }
 

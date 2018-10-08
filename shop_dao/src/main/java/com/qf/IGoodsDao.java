@@ -10,4 +10,6 @@ public interface IGoodsDao {
     Integer addGoods(goods goods);
 
     List<goods> queryNew();
+
+    goods queryOneById(Integer id);
 }

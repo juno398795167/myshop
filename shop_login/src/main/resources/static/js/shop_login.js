@@ -12,7 +12,16 @@ function callback(data) {
 
     }else {
 
-        $("#pid").html("[<a href=\"http://localhost:8084/tologin\">登录</a>][<a href=\"\">注册</a>]")
+        $("#pid").html("[<a href=\"javascript:login();\">登录</a>][<a href=\"\">注册</a>]")
     }
+
+}
+function login() {
+    var resultUrl = location.href;
+    /*alert(resultUrl)*/
+    resultUrl = encodeURI(resultUrl);
+    resultUrl = resultUrl.replace("&","*");
+     location.href = "http://localhost:8084/tologin?resultUrl="+resultUrl;
+
 
 }
